@@ -1,0 +1,17 @@
+[
+    {
+        "titulo": "deve registrar a entrega de um trabalho com título e descrição",
+        "dadosTrabalho": {
+            "titulo": "Lista de Exercícios 2",
+            "descricao": "Resolução dos exercícios de 1 a 10 do capítulo 3."
+        },
+        "statusCodeEsperado": 201
+    },
+    {
+        "titulo": "deve registrar a entrega de um trabalho apenas com o título",
+        "dadosTrabalho": {
+            "titulo": "Resumo do Capítulo 4"
+        },
+        "statusCodeEsperado": 201
+    }
+]

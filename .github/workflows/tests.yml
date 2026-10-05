@@ -1,6 +1,7 @@
 name: Testes de API
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -21,6 +22,9 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+    env:
+      MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos-test
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -28,13 +32,24 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24.x
           cache: npm
 
       - name: Instalar dependências
         run: npm ci
 
+      - name: Criar o .env a partir do .env.example
+        run: cp .env.example .env
+
+      - name: Iniciar a API em segundo plano
+        run: nohup node src/server.js > api.log 2>&1 &
+
+      - name: Aguardar a API iniciar
+        run: sleep 10
+
       - name: Executar testes
         run: npm test
-        env:
-          MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos-test
+
+      - name: Exibir log da API em caso de falha
+        if: failure()
+        run: cat api.log

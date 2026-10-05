@@ -260,3 +260,14 @@ curl -X POST http://localhost:3000/api/alunos/aluno-ana-souza/trabalhos \
 
 > Novos registros criados via API recebem ids no formato UUID (gerados com
 > `crypto.randomUUID()`), diferente dos ids legíveis usados nos dados fake acima.
+
+## Testes automatizados de API (Mocha, SuperTest e Chai)
+
+1. `npm install`
+2. Copie `.env.example` para `.env` (`cp .env.example .env`) e ajuste `BASE_URL`, `ADMIN_EMAIL` e `ADMIN_SENHA`.
+3. Suba o MongoDB e a API (`npm start`).
+4. Em outro terminal: `npm test`.
+
+Estrutura: `test/helpers` (api e login de admin/aluno), `test/factories` (dados dinâmicos),
+`test/fixtures` (JSON do Data-Driven Testing) e `test/external` (testes via HTTP).
+A pipeline fica em `.github/workflows/tests.yml`.

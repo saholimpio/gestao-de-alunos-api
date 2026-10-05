@@ -1,0 +1,15 @@
+[
+    {
+        "titulo": "deve retornar 400 quando o título do trabalho não for informado",
+        "dadosTrabalho": {
+            "titulo": "",
+            "descricao": "Entrega sem título"
+        },
+        "statusCodeEsperado": 400
+    },
+    {
+        "titulo": "deve retornar 400 quando nenhum dado do trabalho for informado",
+        "dadosTrabalho": {},
+        "statusCodeEsperado": 400
+    }
+]

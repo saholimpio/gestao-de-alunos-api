@@ -1,0 +1,17 @@
+[
+    {
+        "titulo": "deve retornar 400 quando a senha não for informada",
+        "credenciais": { "email": "usuario.inexistente@example.com", "senha": "" },
+        "statusCodeEsperado": 400
+    },
+    {
+        "titulo": "deve retornar 400 quando o e-mail não for informado",
+        "credenciais": { "email": "", "senha": "123456" },
+        "statusCodeEsperado": 400
+    },
+    {
+        "titulo": "deve retornar 401 quando o usuário não existir",
+        "credenciais": { "email": "usuario.inexistente@example.com", "senha": "123456" },
+        "statusCodeEsperado": 401
+    }
+]
